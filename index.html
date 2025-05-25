@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indhaus Mesas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('imagensind/fundoaltaresolucao.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .whatsapp-float, .instagram-float {
+      position: fixed;
+      right: 20px;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 24px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-float {
+      bottom: 20px;
+      background-color: #25D366;
+    }
+
+    .instagram-float {
+      bottom: 90px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .whatsapp-float:hover, .instagram-float:hover {
+      transform: scale(1.1);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 2rem;
+      background: rgba(31, 41, 55, 0.75);
+      color: #f0f4f8;
+    }
+
+    header img {
+      width: 300px;
+      max-width: 90%;
+      margin: 0 auto 1rem;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      font-family: 'Georgia', serif;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      font-style: italic;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      color: #1f2937;
+      font-family: 'Georgia', serif;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    #introText p {
+      font-style: italic;
+      font-family: 'Georgia', 'Palatino Linotype', Palatino, serif;
+      font-size: 1.6rem;
+      color: white;
+      text-align: center;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 2rem auto 4rem;
+    }
+
+    #introText video {
+      display: block;
+      margin: 2rem auto 0;
+      max-width: 700px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .buttons {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .btn {
+      background: #0f172a;
+      color: #fff;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin: 0.5rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1e3a8a;
+    }
+
+    #contact, #photos {
+      display: none;
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+    }
+
+    footer {
+      background: rgba(31, 41, 55, 0.9);
+      color: #f0f4f8;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+      }
+    }
+
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function toggleSection(id) {
+      document.getElementById("contact").style.display = "none";
+      document.getElementById("photos").style.display = "none";
+      if (id !== 'home') {
+        document.getElementById(id).style.display = "block";
+        window.scrollTo({ top: document.getElementById(id).offsetTop - 60, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('click', () => {
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.getElementById('lightbox-img');
+          lightboxImg.src = img.src;
+          lightbox.style.display = 'flex';
+        });
+      });
+
+      document.getElementById('lightbox').addEventListener('click', function (e) {
+        if (e.target !== document.getElementById('lightbox-img')) {
+          this.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <a href="https://www.instagram.com/acabamentosresinados" class="instagram-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram fa-2x"></i>
+  </a>
+
+  <a href="https://api.whatsapp.com/send?phone=5511996968982&text=Ol%C3%A1%20Indhaus,%20eu%20vim%20atrav%C3%A9s%20do%20site,%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp fa-2x"></i>
+  </a>
+
+  <!-- Conteúdo continua com <header>, <main>, etc... -->
+  <header>
+    <img src="imagensind/Indhausmesas.jpg" alt="Mesas Resinadas" />
+    <h1>Indhaus Mesas</h1>
+    <p>Mesas exclusivas em madeira e resina | Design autoral</p>
+  </header>
+
+  <main>
+    <div class="buttons">
+      <button class="btn" onclick="toggleSection('home')">Início</button>
+      <button class="btn" onclick="toggleSection('contact')">Contatos</button>
+      <button class="btn" onclick="toggleSection('photos')">Fotos</button>
+    </div>
+
+    <div id="introText">
+      <p>
+        Transforme os veios da madeira em padrões exclusivos com a nossa resina premium —<br>
+        escolha a cor que combina com seu estilo e tenha uma mesa única, feita sob medida para você.<br>
+        Nossas peças são resistentes à umidade e ao uso diário,<br>
+        garantindo beleza e durabilidade.<br>
+        Trabalhos personalizados, 100% autênticos, para quem busca autenticidade e design autoral em cada detalhe.
+      </p>
+
+      <video autoplay muted loop playsinline style="max-width: 100%; border-radius: 1rem; margin-top: 2rem; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+        <source src="imagensind/centralvideoind.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeo.
+      </video>
+    </div>
+
+    <div id="photos" class="gallery">
+      <div class="gallery-item">
+        <img src="imagensind/mesa1.jpg" alt="Mesa Rio Verde" />
+        <h2>Mesa Rio Verde</h2>
+        <p>Design moderno com madeira rústica e resina pigmentada azul erverdeado. Tamanho: 2,00m x 1,00m.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagensind/mesa2.jpg" alt="Mesa Fusão Vulcânica" />
+        <h2>Mesa Fusão Vulcânica</h2>
+        <p>Formato orgânico com resina ônix. Perfeita para ambientes sofisticados. Tamanho: 1,80m x 90cm.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagensind/mesa3.jpg" alt="Mesa Natureza Azul" />
+        <h2>Mesa Natureza Azul</h2>
+        <p>Obra de arte em azul translúcido. Orgânica e sofisticada, ideal para espaços gourmet.. Diâmetro: 1,20m.</p>
+        </div>
+        <div class="gallery-item">
+        <img src="imagensind/mesa4.jpg" alt="Mesa Clean White" />
+        <h2>Mesa Clean White</h2>
+        <p>Trabalho de Resinagem limpo e cristalino em uma mesa de luxo.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagensind/mesa6.jpg" alt="Mesa Rio de Marmore Cinza" />
+        <h2>Mesa Rio de Marmore Cinza</h2>
+        <p>Uma peça maravilhosa feito como um rio de marmore cinza cristalino.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagensind/mesa8.jpg" alt="Mesa Recepção Cristal" />
+        <h2>Mesa Recepção Cristal</h2>
+        <p>Mesa com Efeito de Cristal. Luxuosa e minimalista, uma peça perfeita para qualquer ambiente.</p>
+      </div>
+    </div>
+
+    <section id="contact">
+      <h2>Contato</h2>
+      <p>Fale diretamente com a gente pelo WhatsApp:</p>
+      <p>
+        <a href="https://wa.me/5511996968982" target="_blank" style="font-size: 1.5rem; color: #10b981; text-decoration: none; font-weight: bold;">
+          11 99696-8982
+        </a>
+      </p>
+
+      <!-- BLOCO DO INSTAGRAM COM ESTILO BONITO -->
+      <div style="margin-top: 2rem; background-color: #1f2937; padding: 1.5rem; border-radius: 12px;">
+        <p style="color: white; font-size: 1.2rem; margin-bottom: 0.5rem;">
+          Ou siga nosso Instagram para ver nosso portifólio e acompanhar nosso trabalho:
+        </p>
+        <a href="https://www.instagram.com/acabamentosresinados" target="_blank" style="display: inline-flex; align-items: center; font-size: 1.4rem; color: #e1306c; font-weight: bold; text-decoration: none;">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 24px; height: 24px; margin-right: 8px;" />
+          @acabamentosresinados
+        </a>
+      </div>
+    </section>
+    
+  </main>
+
+  <div id="lightbox" class="lightbox-overlay">
+    <img id="lightbox-img" src="" alt="Imagem Ampliada" />
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Indhaus Mesas. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
